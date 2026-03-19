@@ -19,6 +19,7 @@ export default function Home() {
     <div className="min-h-screen p-8 flex flex-col items-center gap-10 text-white font-sans bg-black">
       <h1 className="text-2xl font-bold m-0">Hackclub Emoji CDN</h1>
       <p className="text-gray-400 m-0 p-0">Do /name:size to get a scaled image</p>
+      <p className="text-gray-400 m-0 p-0">Do /:name start with colon to get a redirect, this helps reduce load on my lil server :&gt;</p>
 
       <form onSubmit={search} className="w-full max-w-md flex">
         <input
