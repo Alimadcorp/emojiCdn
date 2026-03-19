@@ -4,7 +4,13 @@ import sharp from "sharp";
 export async function GET(req, { params }) {
   params = await params;
   let code = 200;
-  let [rawId, sizeStr] = params.id.split(":");
+  let IED = params.id;
+  let redirect = false;
+  if (IED.startsWith(":")) {
+    redirect = true;
+    IED = IED.slice(1);
+  }
+  let [rawId, sizeStr] = IED.split(":");
   let size = sizeStr ? Math.max(Math.min(parseInt(sizeStr, 10), 512), 8) : null;
 
   let url = emojiList[rawId];
@@ -20,6 +26,15 @@ export async function GET(req, { params }) {
     "DATA!",
     "https://projects.iamcal.com/emoji-data/img-apple-64/"
   );
+
+  if(redirect) {
+    return new Response(null, {
+      status: 302,
+      headers: {
+        Location: url
+      }
+    });
+  }
 
   const res = await fetch(url);
   if (!res.ok) return new Response("Failed to fetch image", { status: 502 });
