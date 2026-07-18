@@ -1,4 +1,4 @@
-import emojiList from "./list.js";
+import emojiList from "./list.json";
 import sharp from "sharp";
 
 export async function GET(req, { params }) {
@@ -19,6 +19,11 @@ export async function GET(req, { params }) {
     url = emojiList[url.slice(6)];
     depth++;
   }
+
+  console.log("Extracted rawId:", JSON.stringify(rawId));
+  console.log("Is key in list?:", rawId in emojiList);
+  console.log("Sample keys:", Object.keys(emojiList).slice(0, 5));
+
   if (!url) {
     return new Response("Not Found", { status: 404 });
   }
