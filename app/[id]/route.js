@@ -20,10 +20,6 @@ export async function GET(req, { params }) {
     depth++;
   }
 
-  console.log("Extracted rawId:", JSON.stringify(rawId));
-  console.log("Is key in list?:", rawId in emojiList);
-  console.log("Sample keys:", Object.keys(emojiList).slice(0, 5));
-
   if (!url) {
     return new Response("Not Found", { status: 404 });
   }
