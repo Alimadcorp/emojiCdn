@@ -1921,4 +1921,4 @@ const standard = {
   secret: "DATA!3299-fe0f.png",
 };
 
-module.exports = standard;
+module.exports = { standard };
