@@ -9,6 +9,6 @@ fetch("https://slack.com/api/emoji.list", {
 }).then(r => r.json()).then(e => {
     if(!e.emoji) console.log(e);
     const emoji = { ...standard, ...(e.emoji) };
-    fs.writeFileSync("./app/[id]/list.js", JSON.stringify(emoji, null, 2));
+    fs.writeFileSync("./app/[id]/list.json", JSON.stringify(emoji, null, 2));
     console.log("Done");
 });
